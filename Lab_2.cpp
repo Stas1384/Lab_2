@@ -9,7 +9,7 @@ public:
 	string currancy;	// âàëþòà
 	//int isVoting, isParliament, LegitPower, ExecPower, Ruler;
 	
-	State::State(double ter, double pop, string curr)
+	State(double ter, double pop, string curr)
 	{
 		State::territory = ter;
 		State::population = pop;
@@ -46,7 +46,7 @@ class Kingdom :  virtual public State
 public:
 	int LegitPower, ExecPower, isParliament, isVoting, Ruler;
 	// êîíñòðóêòîð êîï³þâàííÿ
-	Kingdom::Kingdom(State &src) :State(territory, population, currancy)
+	Kingdom(State &src) :State(src.territory, src.population, src.currancy)
 	{
 		Kingdom::territory = src.territory;// ter;
 		Kingdom::population = src.population;
@@ -102,7 +102,7 @@ int main(void)
 	cout << "Ukraine: ";
 	Ukraine.getinfo();
 	*/
-	Kingdom *UK = new Kingdom(State(420.7,57.6,"pound"));// :State(603, 45, "gryvna");		// Âåëèêîáðèòàí³ÿ
+	Kingdom *UK = new Kingdom(*(new State(420.7,57.6,"pound")));// :State(603, 45, "gryvna");		// Âåëèêîáðèòàí³ÿ
 
 	cout << "UK: ";
 	UK->getinfo();
